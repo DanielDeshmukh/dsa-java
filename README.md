@@ -1,7 +1,7 @@
 # dsa-java
 
 [![LeetCode](https://img.shields.io/badge/LeetCode-deshmukhdaniel-orange?style=flat&logo=leetcode)](https://leetcode.com/u/deshmukhdaniel/)
-[![Java](https://img.shields.io/badge/Java-17-blue?style=flat&logo=openjdk)](https://www.java.com)
+[![Java](https://img.shields.io/badge/Java-17-blue?style=flat&logo=java)](https://www.java.com)
 [![GitHub last commit](https://img.shields.io/github/last-commit/DanielDeshmukh/dsa-java?style=flat)](https://github.com/DanielDeshmukh/dsa-java)
 
 Java DSA practice repo — organized by problem patterns for interview prep.
