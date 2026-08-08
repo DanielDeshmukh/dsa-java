@@ -1,0 +1,121 @@
+name: Update README Progress
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Count problems and update README
+        run: |
+          # Define pattern folders
+          folders=(
+            "two-pointers"
+            "sliding-window"
+            "fast-slow-pointers"
+            "merge-intervals"
+            "cyclic-sort"
+            "inplace-linked-list-reversal"
+            "bfs"
+            "dfs-backtracking"
+            "two-heaps"
+            "subsets-backtracking"
+            "binary-search"
+            "top-k-heap"
+            "k-way-merge"
+            "dp-1d"
+            "dp-2d"
+            "greedy"
+            "topological-sort"
+            "trie"
+            "union-find"
+            "monotonic-stack"
+          )
+
+          # Count problems in each folder
+          echo "Counting problems..."
+          for folder in "${folders[@]}"; do
+            if [ -d "$folder" ]; then
+              count=$(find "$folder" -name "*.java" | wc -l)
+              echo "$folder: $count"
+            fi
+          done
+
+          # Count total
+          total_java=$(find . -maxdepth 2 -name "*.java" ! -path "./.github/*" | wc -l)
+          echo "Total Java: $total_java"
+
+          # Create Python script to update README
+          cat > update_readme.py << 'PYTHON_SCRIPT'
+          import os
+          import re
+
+          # Pattern folders
+          folders = [
+              "two-pointers", "sliding-window", "fast-slow-pointers",
+              "merge-intervals", "cyclic-sort", "inplace-linked-list-reversal",
+              "bfs", "dfs-backtracking", "two-heaps", "subsets-backtracking",
+              "binary-search", "top-k-heap", "k-way-merge", "dp-1d", "dp-2d",
+              "greedy", "topological-sort", "trie", "union-find", "monotonic-stack"
+          ]
+
+          # Count problems
+          counts = {}
+          for folder in folders:
+              if os.path.exists(folder):
+                  java_count = len([f for f in os.listdir(folder) if f.endswith('.java')])
+                  counts[folder] = java_count
+              else:
+                  counts[folder] = 0
+
+          # Read README
+          with open('README.md', 'r') as f:
+              content = f.read()
+
+          # Update Progress table
+          for folder, count in counts.items():
+              # Match pattern like: | 1 | Two Pointers | 0/5 | ⬜ |
+              pattern = rf'(\|\s*\d+\s*\|\s*[^|]+\|\s*)\d+(/5)(\s*\|\s*⬜?\s*\|)'
+              if re.search(pattern, content):
+                  # Only update if pattern exists
+                  pass
+
+          # Simpler approach: update each line
+          lines = content.split('\n')
+          for i, line in enumerate(lines):
+              for folder, count in counts.items():
+                  # Check if line contains the folder pattern indicator
+                  if folder.replace('-', ' ').title() in line or folder.replace('-', ' ') in line.lower():
+                      # Update the count number
+                      new_line = re.sub(r'\d+/5', f'{count}/5', line)
+                      lines[i] = new_line
+                      break
+
+          content = '\n'.join(lines)
+
+          # Write README
+          with open('README.md', 'w') as f:
+              f.write(content)
+
+          print(f"README updated! Total problems: {sum(counts.values())}")
+          PYTHON_SCRIPT
+
+          # Run the update script
+          python update_readme.py
+
+      - name: Commit updated README
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --staged --quiet || git commit -m "chore: update progress counts [skip ci]"
+          git push
