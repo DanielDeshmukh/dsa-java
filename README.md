@@ -36,17 +36,22 @@ Java DSA practice repo — organized by problem patterns for interview prep.
 | 2 | Sliding Window | 0/5 | ⬜ |
 | 3 | Fast & Slow Pointers | 0/5 | ⬜ |
 | 4 | Merge Intervals | 0/5 | ⬜ |
-| 5 | Binary Search | 0/5 | ⬜ |
-| 6 | Hashing / Frequency Counting | 0/5 | ⬜ |
-| 7 | Stack-based | 0/5 | ⬜ |
-| 8 | BFS (Graph/Tree) | 0/5 | ⬜ |
-| 9 | DFS / Backtracking | 0/5 | ⬜ |
-| 10 | Tree Traversal | 0/5 | ⬜ |
-| 11 | Union-Find | 0/5 | ⬜ |
-| 12 | Top-K / Heap | 0/5 | ⬜ |
-| 13 | Dynamic Programming (1D) | 0/5 | ⬜ |
-| 14 | Dynamic Programming (2D) | 0/5 | ⬜ |
-| 15 | Prefix Sum / Difference Array | 0/5 | ⬜ |
+| 5 | Cyclic Sort | 0/5 | ⬜ |
+| 6 | In-place Linked List Reversal | 0/5 | ⬜ |
+| 7 | BFS (Graph/Tree) | 0/5 | ⬜ |
+| 8 | DFS (Graph/Tree) | 0/5 | ⬜ |
+| 9 | Two Heaps | 0/5 | ⬜ |
+| 10 | Subsets / Backtracking | 0/5 | ⬜ |
+| 11 | Modified Binary Search | 0/5 | ⬜ |
+| 12 | Top-K Elements (Heap) | 0/5 | ⬜ |
+| 13 | K-way Merge | 0/5 | ⬜ |
+| 14 | DP — Knapsack | 0/5 | ⬜ |
+| 15 | DP — Fibonacci/Memoization | 0/5 | ⬜ |
+| 16 | Greedy | 0/5 | ⬜ |
+| 17 | Topological Sort | 0/5 | ⬜ |
+| 18 | Trie (Prefix Tree) | 0/5 | ⬜ |
+| 19 | Union-Find | 0/5 | ⬜ |
+| 20 | Monotonic Stack | 0/5 | ⬜ |
 
 ---
 
@@ -71,17 +76,22 @@ dsa-java/
 ├── sliding-window/
 ├── fast-slow-pointers/
 ├── merge-intervals/
-├── binary-search/
-├── hashing/
-├── stack/
+├── cyclic-sort/
+├── inplace-linked-list-reversal/
 ├── bfs/
 ├── dfs-backtracking/
-├── tree-traversal/
-├── union-find/
+├── two-heaps/
+├── subsets-backtracking/
+├── binary-search/
 ├── top-k-heap/
+├── k-way-merge/
 ├── dp-1d/
 ├── dp-2d/
-├── prefix-sum/
+├── greedy/
+├── topological-sort/
+├── trie/
+├── union-find/
+├── monotonic-stack/
 └── README.md
 ```
 
